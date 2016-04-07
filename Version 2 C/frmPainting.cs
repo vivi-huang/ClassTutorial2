@@ -1,9 +1,9 @@
 namespace Version_2_C
 {
-    public partial class frmPainting : Version_2_C.frmWork
+    sealed public partial class frmPainting : Version_2_C.frmWork
     {
-
-        public frmPainting()
+        public static readonly frmPainting Instance = new frmPainting();
+        private frmPainting()
         {
             InitializeComponent();
         }

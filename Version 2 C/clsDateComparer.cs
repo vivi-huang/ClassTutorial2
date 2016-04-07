@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 namespace Version_2_C
 {
-    class clsDateComparer : IComparer<clsWork>
+    //step three
+    sealed class clsDateComparer : IComparer<clsWork>
     {
+        //STEP TWO
+        public static readonly clsDateComparer Instance = new clsDateComparer();
         public int Compare(clsWork x, clsWork y)
         {
             //DateTime lcDateX = x.Date;
@@ -14,6 +17,9 @@ namespace Version_2_C
 
             //return lcDateX.CompareTo(lcDateY);
         }
+        // STEP ONE
+        private clsDateComparer()
+        { }
     }
 
     class clsDDateComparer : IComparer<clsWork>
