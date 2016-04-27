@@ -12,10 +12,12 @@ namespace Version_2_C
 
         //[NonSerialized()]
         //private static frmPainting _PaintDialog;
-
+        public delegate void LoadPaintingFormDelegate(clsPainting prPainting);
+        public static LoadPaintingFormDelegate LoadPaintingForm;
         public override void EditDetails()
         {
-            frmPainting.Instance.SetDetails(this);
+            LoadPaintingForm(this);
+            //frmPainting.Instance.SetDetails(this);
             //if (_PaintDialog == null)
             //    _PaintDialog = new frmPainting();
             //_PaintDialog.SetDetails(this);

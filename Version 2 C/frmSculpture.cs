@@ -2,6 +2,10 @@ namespace Version_2_C
 {
     sealed public partial class frmSculpture : Version_2_C.frmWork
     {
+        public static void Run(clsSculpture prSculpture)
+        {
+            Instance.SetDetails(prSculpture);
+        }
         public static readonly frmSculpture Instance = new frmSculpture();
         private frmSculpture()
         {

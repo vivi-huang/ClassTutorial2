@@ -2,6 +2,10 @@ namespace Version_2_C
 {
     sealed public partial class frmPhotograph : Version_2_C.frmWork
     {
+        public static void Run(clsPhotograph prPhotograph)
+        {
+            Instance.SetDetails(prPhotograph);
+        }
         public static readonly frmPhotograph Instance = new frmPhotograph();
         private frmPhotograph()
       

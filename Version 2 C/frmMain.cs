@@ -3,18 +3,28 @@ using System.Windows.Forms;
 
 namespace Version_2_C
 {
-    public partial class frmMain : Form
+    sealed public partial class frmMain : Form
     {
-        public frmMain()
+        private static readonly frmMain _Instance = new frmMain();
+        private frmMain()
         {
             InitializeComponent();
         }
 
         private clsArtistList _ArtistList = new clsArtistList();
 
-        private void updateDisplay()
+        public static frmMain Instance
         {
-            lstArtists.DataSource = null;
+            get
+            {
+                return _Instance;
+            }
+        }
+
+        public void updateDisplay()
+        {
+
+            //lstArtists.DataSource = null;
             string[] lcDisplayList = new string[_ArtistList.Count];
             _ArtistList.Keys.CopyTo(lcDisplayList, 0);
             lstArtists.DataSource = lcDisplayList;
@@ -25,9 +35,10 @@ namespace Version_2_C
         {
             try
             {
-                _ArtistList.NewArtist();
-                MessageBox.Show("Artist added!", "Success");
-                updateDisplay();
+                frmArtist.Run(new clsArtist(_ArtistList));
+                //_ArtistList.NewArtist();
+                //MessageBox.Show("Artist added!", "Success");
+                //updateDisplay();
             }
             catch (Exception ex)
             {
@@ -43,8 +54,9 @@ namespace Version_2_C
             if (lcKey != null)
                 try
                 {
-                    _ArtistList.EditArtist(lcKey);
-                    updateDisplay();
+                    frmArtist.Run(_ArtistList[lcKey]);
+                    //_ArtistList.EditArtist(lcKey);
+                    //updateDisplay();
                 }
                 catch (Exception ex)
                 {
